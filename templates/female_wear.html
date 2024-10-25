@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+
+{% load static %}
+
+{% block title %}Female- The Wardrobe{% endblock %}
+
+{% block content %}
+<div class="container">
+    
+    {% comment %} <h1>Male Clothes</h1>
+    <div class="row">
+        {% for item in clothes %}
+            {% if item.gender_category == 'male' %}
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.name }}</h5>
+                        <p class="card-text">${{ item.price }}</p>
+                        <p class="card-text">Category: {{ item.get_item_category_display }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div> {% endcomment %}
+
+    <h1>Female Clothes</h1>
+    <div class="row">
+        {% for item in clothes %}
+            {% if item.gender_category == 'female' %}
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.name }}</h5>
+                        <p class="card-text">${{ item.price }}</p>
+                        <p class="card-text">Category: {{ item.get_item_category_display }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    
+</div>
+{% endblock %}

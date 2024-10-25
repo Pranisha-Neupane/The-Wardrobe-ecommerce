@@ -1,0 +1,119 @@
+/* 
+.roboto-thin {
+    font-family: "Roboto", serif;
+    font-weight: 100;
+    font-style: normal;
+  } */
+
+/* code for navbar */
+.navbar {
+    background-color: #000;
+  }
+  .navbar-nav .nav-link {
+    color: #f9ba00 !important;
+  }
+  .navbar-toggler {
+    border-color: #f9ba00 !important;
+  }
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(249,186,0, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  }
+  .navbar-dark .navbar-toggler {
+    border-color: transparent;
+  }
+
+
+
+/* Add a yellow border to "For Her" and "For Him" links */
+
+.nav-link {
+  border: 2px solid #ffc107; /* Transparent border for default state*/
+  border-radius: 5px;
+  padding: 5px 10px; /* Add padding to make the border visible */
+  transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.nav-link.active,
+.nav-link:hover {
+  border-color: #f9ba00; /* Yellow border on default */
+  background-color: #ffc107; /* Yellow background on hover */
+  color: white !important; /* White text on hover */
+}
+
+
+
+  @media (max-width: 991.98px) {
+    .navbar-nav {
+      background-color: #333; /* Mobile background */
+    }
+  }
+  .btn-cart {
+    background-color: #f9ba00;
+    color: #000;
+    border: none;
+  }
+  .btn-cart:hover {
+    background-color: #f39c12;
+    color: #fff;
+  }
+
+
+/* Css for loin and register page */
+/* 
+body {
+    background-color: #d7f2ee;
+    height: 100vh;
+} */
+.register-container {
+    margin-top: 50px;
+}
+.register-form {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.register-btn {
+    background-color:#f9ba00;
+    border: none;
+}
+.register-btn:hover {
+    background-color:#f9ba00;
+}
+
+
+.login-container {
+    margin-top:50px;
+}
+
+.login-form {
+    /* background: white; */
+
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.login-btn {
+    background-color:#f9ba00;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+    background-color:#f9ba00;
+}
+
+input[type="checkbox"] {
+    accent-color: #17a2b8; /* Style for the "Show Password" checkbox */
+}
+
+h3.text-center {
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+  

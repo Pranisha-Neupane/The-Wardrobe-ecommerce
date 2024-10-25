@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+
+{% load static %}
+
+{% block title %}Home - The Wardrobe{% endblock %}
+
+{% block content %}
+    <div style="background-image: url('{% static 'images/bg-1.jpg' %}');">
+
+        <h1>All Clothes</h1>
+
+        <div class="container">
+            <div class="row">
+                {% for item in clothes %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ item.name }}</h5>
+                            <p class="card-text">${{ item.price }}</p>
+                            <p class="card-text">Gender: {{ item.get_gender_category_display }}</p>
+                            <p class="card-text">Category: {{ item.get_item_category_display }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

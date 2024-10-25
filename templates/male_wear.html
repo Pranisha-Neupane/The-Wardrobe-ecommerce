@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block title %}Male- The Wardrobe{% endblock %}
+
+
+{% block content %}
+
+
+<div class="container">
+    <!-- Section for all clothes -->
+
+    <h1>Male Clothes</h1>
+
+    <div class="row">
+        {% for item in clothes %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <!-- Assuming item has an image field; otherwise, use a placeholder -->
+                <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.name }}</h5>
+                    <p class="card-text">${{ item.price }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Male Clothes Section -->
+    
+    <div class="row">
+        {% for item in male_clothes %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <!-- Image for male clothes -->
+                <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.name }}</h5>
+                    <p class="card-text">${{ item.price }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+
+
+
