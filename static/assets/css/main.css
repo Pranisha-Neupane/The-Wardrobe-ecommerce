@@ -5,6 +5,11 @@
     font-style: normal;
   } */
 
+
+  body {
+    padding-top: 100px; 
+}
+
 /* code for navbar */
 .navbar {
     background-color: #000;
@@ -22,7 +27,9 @@
     border-color: transparent;
   }
 
-
+  .custom-navbar-height {
+    height: 100px; 
+  }
 
 /* Add a yellow border to "For Her" and "For Him" links */
 
