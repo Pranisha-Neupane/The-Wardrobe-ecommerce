@@ -14,12 +14,6 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-# from django.contrib import admin
-# from django.urls import path
-
-# urlpatterns = [
-#     path('admin/', admin.site.urls),
-# ]
 
 
 from django.conf import settings
@@ -32,6 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('app.urls')),
     path('authentication/',include('authentication_app.urls')),
+    path('cart/',include('cart_app.urls')),
     
 ]
 
