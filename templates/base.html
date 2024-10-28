@@ -64,7 +64,7 @@
                 
 
                 <!-- Account and Cart buttons -->
-                <div class="d-flex align-items-center">
+                {% comment %} <div class="d-flex align-items-center">
                     <div class="dropdown me-3">
                         <button class="btn btn-outline-warning dropdown-toggle" type="button" id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                             Accounts
@@ -73,8 +73,23 @@
                             <li><a class="dropdown-item" href="{% url 'user_login' %}">Login</a></li>
                             <li><a class="dropdown-item" href="{% url 'user_register' %}">Register</a></li>
                         </ul>
-                    </div>
-                    {% comment %} {% url 'user_register' %} {% endcomment %}
+                    </div> {% endcomment %}
+
+
+                    <div class="d-flex align-items-center">
+                        <div class="dropdown me-3">
+                            <button class="btn btn-outline-warning dropdown-toggle" type="button" id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                Accounts
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="accountDropdown">
+                                {% if user.is_authenticated %}
+                                    <li><a class="dropdown-item" href="{% url 'user_logout' %}">Logout</a></li>
+                                {% else %}
+                                    <li><a class="dropdown-item" href="{% url 'user_login' %}">Login</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'user_register' %}">Register</a></li>
+                                {% endif %}
+                            </ul>
+                        </div>
 
 
                     <!-- Cart Button -->
