@@ -66,6 +66,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # recently created custom_context.py file in cart_app
+                'cart_app.custom_context.cart_item_count',
             ],
         },
     },
