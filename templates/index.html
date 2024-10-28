@@ -24,7 +24,10 @@
                             <p class="card-text">${{ item.price }}</p>
                             <p class="card-text">Gender: {{ item.get_gender_category_display }}</p>
                             <p class="card-text">Category: {{ item.get_item_category_display }}</p>
+                            
                             <button class="btn btn-primary add-to-cart" onclick="addToCart('{{ item.id }}', '{{ item.name }}', {{ item.price }})">Add to Cart</button>
+
+                            {% comment %} <button class="btn btn-primary add-to-cart" onclick="addToCart('{{ item.id }}', '{{ item.name }}', {{ item.price }})">Add to Cart</button> {% endcomment %}
                         </div>
                     </div>
                 </div>

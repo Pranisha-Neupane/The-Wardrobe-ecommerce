@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 
 class CartItem(models.Model):
     product = models.ForeignKey(Clothes, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     quantity = models.PositiveIntegerField(default=1)
 
     def __str__(self):
