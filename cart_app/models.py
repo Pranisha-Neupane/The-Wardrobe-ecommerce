@@ -14,3 +14,10 @@ class CartItem(models.Model):
 
     def get_total_price(self):
         return self.quantity * self.product.price
+
+# used to check the validation of cart item ,if cartitem is less than zero it throws an error 
+def save(self, *args, **kwargs):
+        # Validate that quantity is at least 1
+        if self.quantity < 1:
+            raise ValueError("Quantity must be at least 1")
+        super().save(*args, **kwargs)
