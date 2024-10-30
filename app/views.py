@@ -19,17 +19,15 @@ def male_wear(request):
     return render(request, 'male_wear.html', {'clothes': male_clothes})
 
 
+# views.py
+from django.shortcuts import render
+from .models import Clothes
 
-# code for search 
-# def search_clothes(request):
-#     query = request.GET.get('q')  # Get the search query from the request
-#     category = request.GET.get('category')  # Get the selected category if applicable
-#     clothes = Clothes.objects.all()
+def search_items(request):
+    query = request.GET.get('q')
+    items = Clothes.objects.all()
+    
+    if query:
+        items = items.filter(item_category__icontains=query)
 
-#     if query:
-#         clothes = clothes.filter(name__icontains=query)  # Filter by name
-
-#     if category:
-#         clothes = clothes.filter(item_category=category)  # Filter by category
-
-#     return render(request, 'search_results.html', {'clothes': clothes, 'query': query, 'category': category})
+    return render(request, 'search.html', {'items': items, 'query': query})
