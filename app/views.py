@@ -21,15 +21,15 @@ def male_wear(request):
 
 
 # code for search 
-def search_clothes(request):
-    query = request.GET.get('q')  # Get the search query from the request
-    category = request.GET.get('category')  # Get the selected category if applicable
-    clothes = Clothes.objects.all()
+# def search_clothes(request):
+#     query = request.GET.get('q')  # Get the search query from the request
+#     category = request.GET.get('category')  # Get the selected category if applicable
+#     clothes = Clothes.objects.all()
 
-    if query:
-        clothes = clothes.filter(name__icontains=query)  # Filter by name
+#     if query:
+#         clothes = clothes.filter(name__icontains=query)  # Filter by name
 
-    if category:
-        clothes = clothes.filter(item_category=category)  # Filter by category
+#     if category:
+#         clothes = clothes.filter(item_category=category)  # Filter by category
 
-    return render(request, 'search_results.html', {'clothes': clothes, 'query': query, 'category': category})
+#     return render(request, 'search_results.html', {'clothes': clothes, 'query': query, 'category': category})
