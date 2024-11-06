@@ -5,35 +5,37 @@
 
 {% block title %}Home - The Wardrobe{% endblock %}
 
-{% block content %}
-    {% comment %} <div style="background-image: url('{% static 'images/bg-1.jpg' %}');"> {% endcomment %}
-      
 
-        <h1>All Clothes</h1>
+ {% block content %}
+    <h1>All Clothes</h1>
 
-        <div class="container">
+    <div class="container">
+        <!-- Sort Dropdown -->
+        <form method="get" class="mb-4">
+            <label for="sort">Sort by:</label>
+            <select name="sort" id="sort" onchange="this.form.submit()">
+                <option value="name_asc" {% if sort_by == 'name_asc' %}selected{% endif %}>Name A-Z</option>
+                <option value="name_desc" {% if sort_by == 'name_desc' %}selected{% endif %}>Name Z-A</option>
+                <option value="price_asc" {% if sort_by == 'price_asc' %}selected{% endif %}>Price Low to High</option>
+                <option value="price_desc" {% if sort_by == 'price_desc' %}selected{% endif %}>Price High to Low</option>
+            </select>
+        </form>
 
-
-            <div class="row">
-                {% for item in clothes %}
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ item.name }}</h5>
-                            <p class="card-text">${{ item.price }}</p>
-                            <p class="card-text">Gender: {{ item.get_gender_category_display }}</p>
-                            <p class="card-text">Category: {{ item.get_item_category_display }}</p>
-                            
-                            <button class="btn btn-primary add-to-cart" onclick="addToCart('{{ item.id }}', '{{ item.name }}', {{ item.price }})">Add to Cart</button>
-
-                            {% comment %} <button class="btn btn-primary add-to-cart" onclick="addToCart('{{ item.id }}', '{{ item.name }}', {{ item.price }})">Add to Cart</button> {% endcomment %}
-                        </div>
+        <div class="row">
+            {% for item in clothes %}
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.name }}</h5>
+                        <p class="card-text">Rs  {{ item.price }}</p>
+                        <p class="card-text">Gender: {{ item.get_gender_category_display }}</p>
+                        <p class="card-text">Category: {{ item.get_item_category_display }}</p>
+                        <button class="btn btn-primary add-to-cart" onclick="addToCart('{{ item.id }}', '{{ item.name }}', {{ item.price }})">Add to Cart</button>
                     </div>
                 </div>
-                {% endfor %}
             </div>
+            {% endfor %}
         </div>
-
     </div>
 {% endblock %}

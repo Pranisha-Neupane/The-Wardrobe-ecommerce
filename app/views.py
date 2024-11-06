@@ -20,8 +20,8 @@ def male_wear(request):
 
 
 # views.py
-from django.shortcuts import render
-from .models import Clothes
+# from django.shortcuts import render
+# from .models import Clothes
 
 def search_items(request):
     query = request.GET.get('q')
@@ -31,3 +31,26 @@ def search_items(request):
         items = items.filter(item_category__icontains=query)
 
     return render(request, 'search.html', {'items': items, 'query': query})
+
+
+
+
+
+
+# for sorting the clothes new code
+
+def product_list(request):
+    sort_by = request.GET.get('sort', 'name_asc')  # Default to sorting by name A-Z
+
+    if sort_by == 'name_asc':
+        clothes = Clothes.objects.all().order_by('name')  # A-Z
+    elif sort_by == 'name_desc':
+        clothes = Clothes.objects.all().order_by('-name')  # Z-A
+    elif sort_by == 'price_asc':
+        clothes = Clothes.objects.all().order_by('price')  # Low to high
+    elif sort_by == 'price_desc':
+        clothes = Clothes.objects.all().order_by('-price')  # High to low
+    else:
+        clothes = Clothes.objects.all()  # Default
+
+    return render(request, 'index.html', {'clothes': clothes, 'sort_by': sort_by})

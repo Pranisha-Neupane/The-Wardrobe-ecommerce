@@ -26,7 +26,22 @@
         {% endfor %}
     </div> {% endcomment %}
 
+
+
+
     <h1>Female Clothes</h1>
+{% comment %} 
+    <form method="get" class="mb-4">
+        <label for="sort">Sort by:</label>
+        <select name="sort" id="sort" onchange="this.form.submit()">
+            <option value="name_asc" {% if sort_by == 'name_asc' %}selected{% endif %}>Name A-Z</option>
+            <option value="name_desc" {% if sort_by == 'name_desc' %}selected{% endif %}>Name Z-A</option>
+            <option value="price_asc" {% if sort_by == 'price_asc' %}selected{% endif %}>Price Low to High</option>
+            <option value="price_desc" {% if sort_by == 'price_desc' %}selected{% endif %}>Price High to Low</option>
+        </select>
+    </form> {% endcomment %}
+
+
     <div class="row">
         {% for item in clothes %}
             {% if item.gender_category == 'female' %}
@@ -35,8 +50,11 @@
                     <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ item.name }}</h5>
-                        <p class="card-text">${{ item.price }}</p>
+                        <p class="card-text">Rs  {{ item.price }}</p>
                         <p class="card-text">Category: {{ item.get_item_category_display }}</p>
+
+                        <button class="btn btn-primary add-to-cart" onclick="addToCart('{{ item.id }}', '{{ item.name }}', {{ item.price }})">Add to Cart</button>
+
                     </div>
                 </div>
             </div>

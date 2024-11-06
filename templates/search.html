@@ -2,45 +2,7 @@
 {% extends 'base.html' %}
 <!-- search.html -->
 {% block content %}
-{% comment %} 
-    <h2>Results:</h2>
-    <ul>
-        {% for item in items %}
-            <li>{{ item.name }} - {{ item.get_item_category_display }} - ${{ item.price }}</li>
-        {% empty %}
-            <li>No items found.</li>
-        {% endfor %}
-    </ul> {% endcomment %}
-
-
-
-
-
-
-
-
-
-
-    <!-- search.html -->
-{% comment %} <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Items</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Include Bootstrap CSS -->
-</head>
-<body> {% endcomment %}
     <div class="container">
-        {% comment %} <h1>Search Items</h1>
-
-        <form class="d-flex me-2" role="search" method="GET" action="{% url 'search_items' %}">
-            <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search" value="{{ request.GET.q }}">
-            <button class="btn btn-outline-warning me-2" type="submit">
-                <i class="fas fa-search"></i>
-            </button>
-        </form> {% endcomment %}
-
         <h2>Results:</h2>
         <div class="row">
             {% for item in items %}
@@ -49,7 +11,7 @@
                         <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ item.name }}</h5>
-                            <p class="card-text">${{ item.price }}</p>
+                            <p class="card-text">Rs {{ item.price }}</p>
                             <p class="card-text">Gender: {{ item.get_gender_category_display }}</p>
                             <p class="card-text">Category: {{ item.get_item_category_display }}</p>
                             
