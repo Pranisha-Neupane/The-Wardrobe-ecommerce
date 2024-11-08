@@ -1,23 +1,17 @@
 
+function addToCart(itemId, itemName, itemPrice) {
+    // Add item to cart using AJAX or update session storage
+    // Example of using sessionStorage to store cart items
+    let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+    cart.push({ id: itemId, name: itemName, price: itemPrice });
+    sessionStorage.setItem('cart', JSON.stringify(cart));
 
-// function addToCart(itemId, itemName, itemPrice) {
-//     // You can use fetch or XMLHttpRequest to send data to the server
-//     fetch('/add_to_cart/', {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json',
-//             'X-CSRFToken': '{{ csrf_token }}' // Ensure CSRF token is included
-//         },
-//         body: JSON.stringify({ 'item_id': itemId, 'name': itemName, 'price': itemPrice })
-//     })
-//     .then(response => {
-//         if (response.ok) {
-//             alert("Item added to cart!");
-//         } else {
-//             alert("Failed to add item to cart.");
-//         }
-//     })
-//     .catch(error => {
-//         console.error("Error adding item to cart:", error);
-//     });
-// }
+    // Update cart count dynamically
+    updateCartCount();
+}
+
+function updateCartCount() {
+    let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+    let cartCount = cart.length;
+    document.getElementById('cart-count').textContent = cartCount;
+}
