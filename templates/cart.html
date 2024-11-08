@@ -1,7 +1,9 @@
-{% extends 'base.html' %}
+
+ {% extends 'base.html' %}
 
 {% block content %}
 <h2>Your Cart</h2>
+{% comment %} {% if cart_items %} {% endcomment %}
 <ul>
     {% for item in cart_items %}
         <li>
@@ -20,7 +22,7 @@
             <th>Price</th>
             <th>Quantity</th>
             <th>Total</th>
-            <th>Actions</th>
+            {% comment %} <th>Actions</th> {% endcomment %}
         </tr>
     </thead>
     <tbody>
@@ -29,7 +31,8 @@
             <td>{{ item.product.name }}</td>
             <td>{{ item.product.price }}</td>
             <td>{{ item.quantity }}</td>
-            <td>{{ item.total_price }}</td>
+            <td>${{ item.get_total_price }}</td>
+            {% comment %} <td>{{ item.total_price }}</td> {% endcomment %}
             <td>
                 
                 <form action="{% url 'remove_from_cart' item.id %}" method="post">
@@ -41,5 +44,48 @@
         {% endfor %}
     </tbody>
 </table>
-<h3>Total: {{ total_price }}</h3>
-{% endblock %}
+{% comment %} <h3>Total: {{ total_price }}</h3> {% endcomment %}
+
+<h3>Total: ${{ total_price }}</h3>
+{% comment %} {% else %}
+    <p>Your cart is empty.</p>
+    {% endif %} {% endcomment %}
+{% endblock %} 
+
+
+{% comment %} 
+{% block content %}
+<h2>Your Cart</h2>
+{% if cart_items %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart_items %}
+            <tr>
+                <td>{{ item.product.name }}</td>
+                <td>${{ item.product.price }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>${{ item.get_total_price }}</td>
+                <td>
+                    <form action="{% url 'remove_from_cart' item.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Remove</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h3>Total: ${{ total_price }}</h3>
+{% else %}
+    <p>Your cart is empty.</p>
+{% endif %}
+{% endblock %} {% endcomment %}
