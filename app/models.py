@@ -1,6 +1,3 @@
-# from django.db import models
-
-# Create your models here.
 
 #  for differentiating between male and female clothes
 from django.db import models

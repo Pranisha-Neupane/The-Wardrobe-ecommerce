@@ -19,9 +19,7 @@ def male_wear(request):
     return render(request, 'male_wear.html', {'clothes': male_clothes})
 
 
-# views.py
-# from django.shortcuts import render
-# from .models import Clothes
+# code for searching the items in the page
 
 def search_items(request):
     query = request.GET.get('q')
@@ -31,9 +29,6 @@ def search_items(request):
         items = items.filter(item_category__icontains=query)
 
     return render(request, 'search.html', {'items': items, 'query': query})
-
-
-
 
 
 
